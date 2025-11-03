@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web-based Unity Animation Editor - Edit .anim files directly in your browser">
+    <meta name="keywords" content="Unity, Animation, Editor, Tool, Web">
+    <meta name="author" content="Unity Animation Editor">
+    <title>Unity Animation Editor</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/themes.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="app-header">
+        <div class="header-left">
+            <svg class="logo" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="32" height="32" rx="4" fill="currentColor"/>
+                <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" stroke="white" stroke-width="2" fill="none"/>
+            </svg>
+            <h1>Unity Animation Editor</h1>
+        </div>
+        <div class="header-right">
+            <button id="theme-toggle" class="icon-button" aria-label="Toggle theme" title="Toggle dark/light theme">
+                <svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M10 15a5 5 0 100-10 5 5 0 000 10z"/>
+                </svg>
+            </button>
+            <a href="https://github.com/s4na/unity-animation-editor" target="_blank" class="icon-button" aria-label="View on GitHub" title="View on GitHub">
+                <svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.137 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z"/>
+                </svg>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="app-main">
+        <!-- Navigation Tabs -->
+        <nav class="tab-navigation">
+            <button class="tab-button active" data-tab="text-to-file">
+                <svg class="tab-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M4 2h8a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V4a2 2 0 012-2z"/>
+                </svg>
+                Text to File
+            </button>
+            <button class="tab-button" data-tab="remove-zeros">
+                <svg class="tab-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M3 2h10a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V3a1 1 0 011-1z"/>
+                </svg>
+                Remove Zeros
+            </button>
+            <button class="tab-button" data-tab="about">
+                <svg class="tab-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 3a1 1 0 011 1v4a1 1 0 11-2 0V5a1 1 0 011-1zm0 8a1 1 0 110-2 1 1 0 010 2z"/>
+                </svg>
+                About
+            </button>
+        </nav>
+
+        <!-- Tab Content -->
+        <div class="tab-content-container">
+            <!-- Text to File Tab -->
+            <div id="text-to-file" class="tab-content active">
+                <div class="tab-header">
+                    <h2>Text to Animation File Converter</h2>
+                    <p>Paste Unity animation text content and download it as a .anim file</p>
+                </div>
+
+                <div class="editor-container">
+                    <div class="editor-header">
+                        <label for="animation-text">Animation Content (YAML)</label>
+                        <div class="validation-status" id="validation-status">
+                            <span class="status-indicator"></span>
+                            <span class="status-text">No content</span>
+                        </div>
+                    </div>
+
+                    <textarea
+                        id="animation-text"
+                        class="animation-editor"
+                        placeholder="Paste your Unity animation YAML content here...&#10;&#10;Example:&#10;%YAML 1.1&#10;%TAG !u! tag:unity3d.com,2011:&#10;--- !u!74 &7400000&#10;AnimationClip:&#10;  m_ObjectHideFlags: 0&#10;  m_Name: MyAnimation&#10;  ..."
+                        spellcheck="false"
+                    ></textarea>
+
+                    <div class="error-display" id="error-display"></div>
+
+                    <div class="editor-footer">
+                        <div class="filename-input-group">
+                            <label for="filename-input">Filename:</label>
+                            <input
+                                type="text"
+                                id="filename-input"
+                                class="filename-input"
+                                placeholder="animation.anim"
+                                value="animation.anim"
+                            >
+                        </div>
+                        <div class="action-buttons">
+                            <button id="clear-button" class="button button-secondary">
+                                <svg class="button-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M5 3h6a1 1 0 011 1v8a1 1 0 01-1 1H5a1 1 0 01-1-1V4a1 1 0 011-1zM3 3h10M6 6v4M10 6v4"/>
+                                </svg>
+                                Clear
+                            </button>
+                            <button id="download-button" class="button button-primary" disabled>
+                                <svg class="button-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M8 1v10m0 0L5 8m3 3l3-3M2 12h12"/>
+                                </svg>
+                                Download .anim
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Remove Zeros Tab -->
+            <div id="remove-zeros" class="tab-content">
+                <div class="tab-header">
+                    <h2>Remove Zero-Value Keyframes</h2>
+                    <p>Upload an animation file and remove keyframes with zero or near-zero values to optimize file size</p>
+                </div>
+
+                <div class="tool-container">
+                    <!-- Upload Section -->
+                    <div class="upload-section" id="upload-section">
+                        <div class="file-upload-zone" id="file-upload-zone">
+                            <svg class="upload-icon" width="48" height="48" viewBox="0 0 48 48" fill="currentColor">
+                                <path d="M24 8v24m0-24l-8 8m8-8l8 8M8 36h32"/>
+                            </svg>
+                            <p class="upload-text">Drag and drop a .anim file here</p>
+                            <p class="upload-subtext">or</p>
+                            <button class="button button-primary" id="browse-button">Browse Files</button>
+                            <input type="file" id="file-input" accept=".anim" hidden>
+                        </div>
+
+                        <div class="file-info" id="file-info" style="display: none;">
+                            <div class="file-info-header">
+                                <svg class="file-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z"/>
+                                </svg>
+                                <div class="file-details">
+                                    <p class="file-name" id="file-name">filename.anim</p>
+                                    <p class="file-size" id="file-size">0 KB</p>
+                                </div>
+                                <button class="button button-secondary button-small" id="change-file-button">Change File</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Options Section -->
+                    <div class="options-section" id="options-section" style="display: none;">
+                        <h3>Processing Options</h3>
+
+                        <div class="option-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="exact-zero" checked>
+                                <span>Remove exact zero values (value === 0)</span>
+                            </label>
+                        </div>
+
+                        <div class="option-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="near-zero">
+                                <span>Remove near-zero values (within threshold)</span>
+                            </label>
+                            <div class="threshold-control" id="threshold-control" style="display: none;">
+                                <label for="threshold-slider">Threshold:</label>
+                                <input type="range" id="threshold-slider" min="-5" max="-2" step="0.1" value="-4">
+                                <span id="threshold-value">0.0001</span>
+                            </div>
+                        </div>
+
+                        <div class="option-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="preserve-first-last" checked>
+                                <span>Preserve first and last keyframes</span>
+                            </label>
+                        </div>
+
+                        <div class="option-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="remove-empty-curves" checked>
+                                <span>Remove empty curves after processing</span>
+                            </label>
+                        </div>
+
+                        <h4>Curve Types to Process</h4>
+                        <div class="option-group-inline">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="process-float" checked>
+                                <span>Float Curves</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="process-position" checked>
+                                <span>Position</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="process-rotation" checked>
+                                <span>Rotation</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="process-scale" checked>
+                                <span>Scale</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Results Section -->
+                    <div class="results-section" id="results-section" style="display: none;">
+                        <h3>Processing Results</h3>
+
+                        <div class="statistics-grid">
+                            <div class="stat-card">
+                                <div class="stat-label">Original Keyframes</div>
+                                <div class="stat-value" id="stat-original-keyframes">0</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-label">Keyframes Removed</div>
+                                <div class="stat-value" id="stat-removed-keyframes">0</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-label">Remaining Keyframes</div>
+                                <div class="stat-value" id="stat-remaining-keyframes">0</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-label">Size Reduction</div>
+                                <div class="stat-value" id="stat-size-reduction">0%</div>
+                            </div>
+                        </div>
+
+                        <div class="processing-status" id="processing-status"></div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="tool-actions" id="tool-actions" style="display: none;">
+                        <button class="button button-secondary" id="reset-button">Reset</button>
+                        <button class="button button-primary" id="process-button">Process Animation</button>
+                        <button class="button button-success" id="download-processed-button" style="display: none;">
+                            <svg class="button-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 1v10m0 0L5 8m3 3l3-3M2 12h12"/>
+                            </svg>
+                            Download Processed File
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Tab -->
+            <div id="about" class="tab-content">
+                <div class="tab-header">
+                    <h2>About Unity Animation Editor</h2>
+                </div>
+
+                <div class="about-content">
+                    <section class="about-section">
+                        <h3>What is this tool?</h3>
+                        <p>Unity Animation Editor is a web-based tool for Unity developers to edit and manipulate Unity animation files (.anim) directly in the browser. No installation required, everything runs locally in your browser.</p>
+                    </section>
+
+                    <section class="about-section">
+                        <h3>Features</h3>
+                        <ul>
+                            <li><strong>Text to File Converter:</strong> Paste Unity animation YAML content and download it as a .anim file</li>
+                            <li><strong>Remove Zeros:</strong> Upload an animation file and remove zero-value keyframes to optimize file size</li>
+                            <li><strong>Privacy-Focused:</strong> All processing happens in your browser - no data is sent to any server</li>
+                            <li><strong>Open Source:</strong> Free to use and modify under MIT License</li>
+                        </ul>
+                    </section>
+
+                    <section class="about-section">
+                        <h3>How to Use</h3>
+                        <h4>Text to File Converter</h4>
+                        <ol>
+                            <li>Copy the YAML content from your Unity animation file</li>
+                            <li>Paste it into the text editor</li>
+                            <li>The tool will automatically validate the format</li>
+                            <li>Enter a filename (optional)</li>
+                            <li>Click "Download .anim" to save the file</li>
+                        </ol>
+
+                        <h4>Remove Zeros Tool</h4>
+                        <ol>
+                            <li>Upload or drag-drop your .anim file</li>
+                            <li>Configure processing options (threshold, curve types, etc.)</li>
+                            <li>Click "Process Animation"</li>
+                            <li>Review the statistics showing what was removed</li>
+                            <li>Download the optimized file</li>
+                        </ol>
+                    </section>
+
+                    <section class="about-section">
+                        <h3>Browser Compatibility</h3>
+                        <p>This tool works best on modern browsers:</p>
+                        <ul>
+                            <li>Chrome/Edge 90+</li>
+                            <li>Firefox 88+</li>
+                            <li>Safari 14+</li>
+                        </ul>
+                    </section>
+
+                    <section class="about-section">
+                        <h3>Open Source</h3>
+                        <p>This project is open source and available on <a href="https://github.com/s4na/unity-animation-editor" target="_blank">GitHub</a>. Contributions are welcome!</p>
+                    </section>
+
+                    <section class="about-section">
+                        <h3>License</h3>
+                        <p>MIT License - Free to use for personal and commercial projects.</p>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Status Bar -->
+    <footer class="status-bar">
+        <div class="status-left">
+            <span id="status-text">Ready</span>
+        </div>
+        <div class="status-right">
+            <span id="file-status">No file loaded</span>
+        </div>
+    </footer>
+
+    <!-- JavaScript Modules -->
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
