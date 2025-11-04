@@ -8,6 +8,14 @@
     "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch",
     "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/s4na/unity-animation-editor.git"
+  },
+  "homepage": "https://s4na.github.io/unity-animation-editor/",
+  "bugs": {
+    "url": "https://github.com/s4na/unity-animation-editor/issues"
+  },
   "keywords": [
     "unity",
     "animation",
@@ -15,7 +23,7 @@
     "yaml",
     "anim"
   ],
-  "author": "",
+  "author": "s4na",
   "license": "MIT",
   "devDependencies": {
     "@jest/globals": "^29.7.0",
