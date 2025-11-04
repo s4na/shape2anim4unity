@@ -2,151 +2,151 @@
 
 https://s4na.github.io/unity-animation-editor/
 
-A web-based tool for Unity developers to edit and manipulate Unity animation files (.anim) directly in the browser. No installation required - everything runs locally in your browser.
+Unity開発者向けのWebベースツールで、Unityアニメーションファイル（.anim）をブラウザ上で直接編集・操作できます。インストール不要 - すべての処理がブラウザ上でローカルに実行されます。
 
-## Features
+## 機能
 
-### 1. Text to File Converter
-- Paste Unity animation YAML content
-- Real-time syntax validation
-- Download as .anim file
-- Auto-extract filename from animation name
+### 1. テキストからファイルへの変換
+- UnityアニメーションのYAMLコンテンツを貼り付け
+- リアルタイムの構文検証
+- .animファイルとしてダウンロード
+- アニメーション名からファイル名を自動抽出
 
-### 2. Remove Zeros Tool
-- Upload .anim files
-- Remove zero-value keyframes to optimize file size
-- Configurable options:
-  - Exact zero removal (value === 0)
-  - Near-zero removal with adjustable threshold
-  - Preserve first/last keyframes
-  - Remove empty curves
-  - Select specific curve types to process
-- View statistics and size reduction
-- Download optimized file
+### 2. ゼロ値削除ツール
+- .animファイルのアップロード
+- ゼロ値のキーフレームを削除してファイルサイズを最適化
+- 設定可能なオプション：
+  - 完全なゼロの削除（value === 0）
+  - 調整可能な閾値によるほぼゼロの削除
+  - 最初/最後のキーフレームを保持
+  - 空のカーブを削除
+  - 処理する特定のカーブタイプを選択
+- 統計情報とサイズ削減率を表示
+- 最適化されたファイルをダウンロード
 
-### 3. Additional Features
-- Dark/Light theme toggle
-- Drag and drop file upload
-- Privacy-focused (all processing happens locally)
-- Mobile-responsive design
+### 3. その他の機能
+- ダーク/ライトテーマの切り替え
+- ドラッグ&ドロップによるファイルアップロード
+- プライバシー重視（すべての処理がローカルで実行）
+- モバイル対応デザイン
 
-## Getting Started
+## はじめに
 
-### Option 1: Use Online
-Visit the GitHub Pages deployment: [https://s4na.github.io/unity-animation-editor/](https://s4na.github.io/unity-animation-editor/)
+### オプション1: オンラインで使用
+GitHub Pagesにアクセス: [https://s4na.github.io/unity-animation-editor/](https://s4na.github.io/unity-animation-editor/)
 
-### Option 2: Run Locally
-1. Clone this repository:
+### オプション2: ローカルで実行
+1. このリポジトリをクローン:
    ```bash
    git clone https://github.com/s4na/unity-animation-editor.git
    cd unity-animation-editor
    ```
 
-2. Serve the files with a local web server. You can use any of these methods:
+2. ローカルWebサーバーでファイルを配信。以下のいずれかの方法を使用できます：
 
-   **Using Python 3:**
+   **Python 3を使用:**
    ```bash
    python -m http.server 8000
    ```
 
-   **Using Node.js (with npx):**
+   **Node.js（npx）を使用:**
    ```bash
    npx serve
    ```
 
-   **Using PHP:**
+   **PHPを使用:**
    ```bash
    php -S localhost:8000
    ```
 
-3. Open your browser and navigate to:
+3. ブラウザを開いて以下にアクセス:
    ```
    http://localhost:8000
    ```
 
-## Usage Guide
+## 使い方ガイド
 
-### Text to File Converter
+### テキストからファイルへの変換
 
-1. **Go to the "Text to File" tab**
-2. **Paste your animation content:**
-   - Copy the YAML content from your Unity .anim file
-   - Paste it into the text editor
-3. **Validation:**
-   - The tool will automatically validate the format
-   - Green indicator = valid format
-   - Red indicator = invalid format (see error messages below the editor)
-4. **Set filename:**
-   - The tool will auto-extract the animation name
-   - Or manually enter a filename
-5. **Download:**
-   - Click "Download .anim" to save the file
+1. **「Text to File」タブを開く**
+2. **アニメーションコンテンツを貼り付け:**
+   - Unity .animファイルからYAMLコンテンツをコピー
+   - テキストエディタに貼り付け
+3. **検証:**
+   - ツールが自動的にフォーマットを検証
+   - 緑のインジケーター = 有効なフォーマット
+   - 赤のインジケーター = 無効なフォーマット（エディタ下部のエラーメッセージを参照）
+4. **ファイル名を設定:**
+   - ツールがアニメーション名を自動抽出
+   - または手動でファイル名を入力
+5. **ダウンロード:**
+   - 「Download .anim」をクリックしてファイルを保存
 
-### Remove Zeros Tool
+### ゼロ値削除ツール
 
-1. **Go to the "Remove Zeros" tab**
-2. **Upload your animation file:**
-   - Drag and drop a .anim file, or
-   - Click "Browse Files" to select a file
-3. **Configure options:**
-   - **Remove exact zeros:** Removes keyframes where value === 0
-   - **Remove near-zeros:** Removes keyframes within a threshold (adjustable)
-   - **Preserve first/last:** Keeps the first and last keyframes of each curve
-   - **Remove empty curves:** Removes curves that have no keyframes after processing
-   - **Curve types:** Select which curve types to process (Float, Position, Rotation, Scale)
-4. **Process:**
-   - Click "Process Animation"
-   - View statistics showing keyframes removed and file size reduction
-5. **Download:**
-   - Click "Download Processed File" to save the optimized animation
+1. **「Remove Zeros」タブを開く**
+2. **アニメーションファイルをアップロード:**
+   - .animファイルをドラッグ&ドロップ、または
+   - 「Browse Files」をクリックしてファイルを選択
+3. **オプションを設定:**
+   - **Remove exact zeros:** value === 0のキーフレームを削除
+   - **Remove near-zeros:** 閾値内のキーフレームを削除（調整可能）
+   - **Preserve first/last:** 各カーブの最初と最後のキーフレームを保持
+   - **Remove empty curves:** 処理後にキーフレームがないカーブを削除
+   - **Curve types:** 処理するカーブタイプを選択（Float、Position、Rotation、Scale）
+4. **処理:**
+   - 「Process Animation」をクリック
+   - 削除されたキーフレーム数とファイルサイズ削減率の統計を表示
+5. **ダウンロード:**
+   - 「Download Processed File」をクリックして最適化されたアニメーションを保存
 
-## Browser Compatibility
+## ブラウザ互換性
 
-This tool works on modern browsers:
+このツールは以下のモダンブラウザで動作します:
 - Chrome/Edge 90+
 - Firefox 88+
 - Safari 14+
 
-## Technical Details
+## 技術詳細
 
-### Technology Stack
-- **HTML5** - Semantic markup
-- **CSS3** - Modern styling with CSS Grid and Flexbox
-- **Vanilla JavaScript (ES6+)** - No frameworks, modular architecture
-- **File API** - For reading and downloading files
-- **Blob API** - For file creation
+### 技術スタック
+- **HTML5** - セマンティックマークアップ
+- **CSS3** - CSS GridとFlexboxを使用したモダンなスタイリング
+- **Vanilla JavaScript (ES6+)** - フレームワーク不使用、モジュラーアーキテクチャ
+- **File API** - ファイルの読み取りとダウンロード用
+- **Blob API** - ファイル作成用
 
-### File Structure
+### ファイル構成
 ```
 unity-animation-editor/
-├── index.html              # Main HTML file
-├── README.md              # This file
-├── plan.md                # Project plan and specifications
+├── index.html              # メインHTMLファイル
+├── README.md              # このファイル
+├── plan.md                # プロジェクト計画と仕様
 ├── css/
-│   ├── main.css          # Base styles
-│   ├── layout.css        # Layout and grid
-│   ├── components.css    # Component styles
-│   └── themes.css        # Color themes
+│   ├── main.css          # 基本スタイル
+│   ├── layout.css        # レイアウトとグリッド
+│   ├── components.css    # コンポーネントスタイル
+│   └── themes.css        # カラーテーマ
 └── js/
-    ├── main.js           # Application entry point
-    ├── config.js         # Configuration constants
+    ├── main.js           # アプリケーションエントリーポイント
+    ├── config.js         # 設定定数
     ├── parsers/
-    │   ├── AnimationParser.js      # Parse Unity animation format
-    │   └── AnimationSerializer.js  # Serialize to Unity format
+    │   ├── AnimationParser.js      # Unityアニメーションフォーマットのパース
+    │   └── AnimationSerializer.js  # Unityフォーマットへのシリアライズ
     ├── processors/
-    │   └── ZeroRemover.js          # Remove zero keyframes
+    │   └── ZeroRemover.js          # ゼロキーフレームの削除
     ├── ui/
-    │   ├── TabManager.js           # Tab navigation
-    │   ├── ThemeManager.js         # Theme switching
-    │   ├── TextToFileUI.js         # Text to file converter UI
-    │   └── RemoveZerosUI.js        # Remove zeros tool UI
+    │   ├── TabManager.js           # タブナビゲーション
+    │   ├── ThemeManager.js         # テーマ切り替え
+    │   ├── TextToFileUI.js         # テキストからファイルへの変換UI
+    │   └── RemoveZerosUI.js        # ゼロ値削除ツールUI
     └── utils/
-        └── FileHandler.js          # File I/O operations
+        └── FileHandler.js          # ファイルI/O操作
 ```
 
-### Unity Animation File Format
+### Unityアニメーションファイルフォーマット
 
-Unity animation files (.anim) are YAML-based text files with the following structure:
+Unityアニメーションファイル（.anim）は以下の構造を持つYAMLベースのテキストファイルです：
 
 ```yaml
 %YAML 1.1
@@ -172,108 +172,108 @@ AnimationClip:
     attribute: m_IsActive
     path: GameObject/Path
     classID: 1
-  # ... more curves and settings
+  # ... より多くのカーブと設定
 ```
 
-## Privacy & Security
+## プライバシーとセキュリティ
 
-- **No Server Communication:** All processing happens entirely in your browser
-- **No Data Collection:** We don't track or store any user data
-- **No Analytics:** No external analytics or tracking scripts
-- **Local Only:** Your animation files never leave your computer
+- **サーバー通信なし:** すべての処理がブラウザ内で完結
+- **データ収集なし:** ユーザーデータの追跡や保存は一切行いません
+- **アナリティクスなし:** 外部のアナリティクスやトラッキングスクリプトは使用していません
+- **ローカルのみ:** アニメーションファイルがコンピュータの外に出ることはありません
 
-## Known Limitations
+## 既知の制限事項
 
-1. **File Size:** Maximum file size is 10MB
-2. **Complex Parsing:** Very complex or unusual Unity animation formats may not parse correctly
-3. **Unity Version:** Tested with Unity 2019.x - 2023.x animation formats
-4. **Browser Required:** Requires a modern browser with JavaScript enabled
+1. **ファイルサイズ:** 最大ファイルサイズは10MB
+2. **複雑なパース:** 非常に複雑または特殊なUnityアニメーションフォーマットは正しくパースできない場合があります
+3. **Unityバージョン:** Unity 2019.x - 2023.xのアニメーションフォーマットでテスト済み
+4. **ブラウザ必須:** JavaScriptが有効なモダンブラウザが必要
 
-## Future Enhancements
+## 今後の機能拡張
 
-Planned features for future versions:
-- Animation curve visualizer
-- Keyframe editor
-- Animation merger
-- Sample rate converter
-- Batch processing
-- Animation validation and reporting
+将来のバージョンで予定されている機能:
+- アニメーションカーブビジュアライザー
+- キーフレームエディタ
+- アニメーションマージャー
+- サンプルレート変換
+- バッチ処理
+- アニメーション検証とレポート
 
-See [plan.md](plan.md) for detailed feature specifications.
+詳細な機能仕様については [plan.md](plan.md) を参照してください。
 
-## Contributing
+## コントリビューション
 
-Contributions are welcome! Please feel free to:
-- Report bugs
-- Suggest new features
-- Submit pull requests
+コントリビューションを歓迎します！以下のことをお気軽に:
+- バグ報告
+- 新機能の提案
+- プルリクエストの提出
 
-## Development
+## 開発
 
-To contribute to this project:
+このプロジェクトに貢献するには:
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Make your changes
-4. Run tests: `npm test`
-5. Test thoroughly in multiple browsers
-6. Commit your changes: `git commit -m "Add feature"`
-7. Push to the branch: `git push origin feature-name`
-8. Submit a pull request
+1. リポジトリをフォーク
+2. フィーチャーブランチを作成: `git checkout -b feature-name`
+3. 変更を加える
+4. テストを実行: `npm test`
+5. 複数のブラウザで徹底的にテスト
+6. 変更をコミット: `git commit -m "Add feature"`
+7. ブランチにプッシュ: `git push origin feature-name`
+8. プルリクエストを提出
 
-### Running Tests
+### テストの実行
 
-This project includes a comprehensive test suite using Jest.
+このプロジェクトはJestを使用した包括的なテストスイートを含んでいます。
 
 ```bash
-# Install dependencies
+# 依存関係のインストール
 npm install
 
-# Run tests
+# テストの実行
 npm test
 
-# Run tests in watch mode
+# ウォッチモードでテストを実行
 npm run test:watch
 
-# Generate coverage report
+# カバレッジレポートの生成
 npm run test:coverage
 ```
 
-Tests are automatically run on push and pull requests via GitHub Actions.
+テストはpushとプルリクエスト時にGitHub Actionsで自動実行されます。
 
-### Coding Standards
-- Use ES6+ JavaScript features
-- Follow existing code structure and naming conventions
-- Comment complex logic
-- Ensure responsive design
-- Test on Chrome, Firefox, and Safari
+### コーディング規約
+- ES6+のJavaScript機能を使用
+- 既存のコード構造と命名規則に従う
+- 複雑なロジックにコメントを記述
+- レスポンシブデザインを確保
+- Chrome、Firefox、Safariでテスト
 
-## License
+## ライセンス
 
-MIT License - See [LICENSE](LICENSE) file for details
+MIT License - 詳細は [LICENSE](LICENSE) ファイルを参照
 
-## Acknowledgments
+## 謝辞
 
-- Built for the Unity developer community
-- Inspired by the need for quick animation file manipulation without opening Unity Editor
+- Unity開発者コミュニティのために構築
+- Unity Editorを開かずに素早くアニメーションファイルを操作する必要性に触発されました
 
-## Support
+## サポート
 
-If you encounter any issues or have questions:
-- Open an issue on GitHub
-- Check existing issues for solutions
-- Review the [plan.md](plan.md) for technical details
+問題が発生した場合や質問がある場合:
+- GitHubでissueを開く
+- 既存のissueで解決策を確認
+- 技術詳細については [plan.md](plan.md) を参照
 
-## Changelog
+## 変更履歴
 
-### Version 1.0.0 (Initial Release)
-- Text to file converter
-- Remove zeros tool with configurable options
-- Dark/light theme support
-- Drag and drop file upload
-- Real-time validation
-- Statistics and size reduction display
+### Version 1.0.0 (初回リリース)
+- テキストからファイルへの変換
+- 設定可能なオプションを持つゼロ値削除ツール
+- ダーク/ライトテーマサポート
+- ドラッグ&ドロップファイルアップロード
+- リアルタイム検証
+- 統計情報とサイズ削減率の表示
 
 ---
 
-**Made with ❤️ for Unity Developers**
+**Unity開発者のために ❤️ を込めて**
