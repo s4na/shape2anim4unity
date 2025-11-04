@@ -1,8 +1,12 @@
 # Unity Animation Editor
 
-https://s4na.github.io/unity-animation-editor/
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://s4na.github.io/unity-animation-editor/)
+[![Tests](https://github.com/s4na/unity-animation-editor/workflows/Tests/badge.svg)](https://github.com/s4na/unity-animation-editor/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Unity開発者向けのWebベースツールで、Unityアニメーションファイル（.anim）をブラウザ上で直接編集・操作できます。インストール不要 - すべての処理がブラウザ上でローカルに実行されます。
+
+**🚀 [ライブデモを試す](https://s4na.github.io/unity-animation-editor/)**
 
 ## 機能
 
@@ -29,6 +33,19 @@ Unity開発者向けのWebベースツールで、Unityアニメーションフ�
 - ドラッグ&ドロップによるファイルアップロード
 - プライバシー重視（すべての処理がローカルで実行）
 - モバイル対応デザイン
+
+## 前提条件
+
+### オンライン使用の場合
+- モダンなWebブラウザ（Chrome 90+、Firefox 88+、Safari 14+）
+- JavaScriptの有効化
+- インターネット接続（初回アクセス時のみ）
+
+### ローカル開発の場合
+- **Node.js:** v16.x以上（テストの実行に必要）
+- **npm:** v7.x以上
+- **Git:** バージョン管理用（オプション）
+- モダンなWebブラウザ
 
 ## はじめに
 
@@ -63,6 +80,19 @@ GitHub Pagesにアクセス: [https://s4na.github.io/unity-animation-editor/](ht
    ```
    http://localhost:8000
    ```
+
+## サンプルファイル
+
+プロジェクトには、ツールをすぐに試せるサンプルアニメーションファイルが含まれています：
+
+- **場所:** `assets/examples/sample-animation.anim`
+- **使い方:**
+  1. 「Remove Zeros」タブを開く
+  2. サンプルファイルをアップロード
+  3. オプションを設定して「Process Animation」をクリック
+  4. 最適化の効果を確認
+
+このサンプルファイルは、ツールの機能をテストしたり、Unityアニメーションフォーマットの構造を理解したりするのに役立ちます。
 
 ## 使い方ガイド
 
@@ -256,6 +286,63 @@ MIT License - 詳細は [LICENSE](LICENSE) ファイルを参照
 
 - Unity開発者コミュニティのために構築
 - Unity Editorを開かずに素早くアニメーションファイルを操作する必要性に触発されました
+
+## トラブルシューティング
+
+### よくある問題と解決策
+
+#### ファイルのアップロードができない
+- **原因:** ブラウザがFile APIをサポートしていない
+- **解決策:** モダンなブラウザ（Chrome 90+、Firefox 88+、Safari 14+）を使用してください
+
+#### 検証エラー: "Invalid YAML format"
+- **原因:** アニメーションファイルのフォーマットが不正
+- **解決策:**
+  - Unity EditorでファイルをYAMLテキストとして開き、完全な内容をコピーしていることを確認
+  - ファイルが`%YAML 1.1`で始まっていることを確認
+  - 特殊文字や改行が正しく含まれていることを確認
+
+#### 処理後にファイルサイズが変わらない
+- **原因:** ファイルにゼロ値のキーフレームが含まれていない
+- **解決策:**
+  - 「Remove near-zeros」オプションを有効にして閾値を調整
+  - アニメーションファイルの内容を確認して、最適化可能な値があるか確認
+
+#### ローカルサーバーで "Access denied" エラー
+- **原因:** ファイルパーミッションまたはCORS問題
+- **解決策:**
+  - `python -m http.server`または`npx serve`を使用してファイルを配信
+  - `file://`プロトコルで直接開かない（一部の機能が動作しません）
+
+#### テストが失敗する
+- **原因:** Node.jsバージョンが古い、または依存関係の問題
+- **解決策:**
+  ```bash
+  # Node.jsバージョンを確認（v16以上が必要）
+  node --version
+
+  # 依存関係を再インストール
+  rm -rf node_modules package-lock.json
+  npm install
+
+  # テストを再実行
+  npm test
+  ```
+
+#### ダウンロードしたファイルがUnityで読み込めない
+- **原因:** ファイル拡張子が正しくない、またはフォーマットが破損
+- **解決策:**
+  - ファイル拡張子が`.anim`であることを確認
+  - ダウンロードしたファイルをテキストエディタで開き、YAML構造が保持されているか確認
+  - オリジナルファイルでツールを再度試す
+
+### さらにサポートが必要な場合
+
+上記の解決策で問題が解決しない場合は、以下の情報を含めてGitHub Issueを作成してください：
+- 使用しているブラウザとバージョン
+- エラーメッセージの全文
+- 再現手順
+- アニメーションファイルのサンプル（可能であれば）
 
 ## サポート
 
