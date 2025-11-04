@@ -1,6 +1,7 @@
 // Main Application Entry Point
 import { TabManager } from './ui/TabManager.js';
 import { ThemeManager } from './ui/ThemeManager.js';
+import { LocalizationManager } from './ui/LocalizationManager.js';
 import { TextToFileUI } from './ui/TextToFileUI.js';
 import { RemoveZerosUI } from './ui/RemoveZerosUI.js';
 import { BlendShapeUI } from './ui/BlendShapeUI.js';
@@ -10,6 +11,7 @@ class UnityAnimationEditor {
     constructor() {
         this.tabManager = null;
         this.themeManager = null;
+        this.localizationManager = null;
         this.textToFileUI = null;
         this.removeZerosUI = null;
         this.blendShapeUI = null;
@@ -28,12 +30,17 @@ class UnityAnimationEditor {
         }
     }
 
-    initializeApp() {
+    async initializeApp() {
         console.log('Unity Animation Editor initializing...');
 
         try {
             // Initialize managers
             this.themeManager = new ThemeManager();
+
+            // Initialize localization (async)
+            this.localizationManager = new LocalizationManager();
+            await this.localizationManager.init();
+
             this.tabManager = new TabManager();
 
             // Initialize UI controllers for each tab
