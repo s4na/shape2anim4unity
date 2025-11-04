@@ -172,7 +172,7 @@ export class BlendShapeUI {
         }
 
         const filename = `${this.animationNameInput.value || 'BlendShapeAnimation'}.anim`;
-        FileHandler.downloadFile(this.generatedYAML, filename);
+        FileHandler.downloadAsFile(this.generatedYAML, filename);
         this.updateStatus(`Downloaded: ${filename}`, 'success');
     }
 
