@@ -159,10 +159,10 @@ export class RemoveZerosUI {
             this.hideResults();
 
             // Update status
-            this.updateStatus(`Loaded: ${file.name}`);
+            this.updateStatus(`読み込み完了: ${file.name}`);
 
         } catch (error) {
-            this.showError(`Failed to load file: ${error.message}`);
+            this.showError(`ファイルの読み込みに失敗しました: ${error.message}`);
         }
     }
 
@@ -232,7 +232,7 @@ export class RemoveZerosUI {
 
     processAnimation() {
         try {
-            this.updateStatus('Processing...');
+            this.updateStatus('処理中...');
 
             const options = this.getOptions();
 
@@ -256,7 +256,7 @@ export class RemoveZerosUI {
 
             // Update UI
             this.showResults(result.stats, sizeReduction);
-            this.updateStatus('Processing complete');
+            this.updateStatus('処理完了');
 
             // Show download button
             const processButton = document.getElementById('process-button');
@@ -270,8 +270,8 @@ export class RemoveZerosUI {
             }
 
         } catch (error) {
-            this.showError(`Processing failed: ${error.message}`);
-            this.updateStatus('Processing failed');
+            this.showError(`処理に失敗しました: ${error.message}`);
+            this.updateStatus('処理失敗');
         }
     }
 
@@ -297,7 +297,7 @@ export class RemoveZerosUI {
 
     downloadProcessedFile() {
         if (!this.processedContent) {
-            this.showError('No processed content to download');
+            this.showError('ダウンロードする処理済み内容がありません');
             return;
         }
 
@@ -307,9 +307,9 @@ export class RemoveZerosUI {
         const success = FileHandler.downloadAsFile(this.processedContent, newName);
 
         if (success) {
-            this.updateStatus(`Downloaded: ${newName}`);
+            this.updateStatus(`ダウンロード完了: ${newName}`);
         } else {
-            this.showError('Download failed');
+            this.showError('ダウンロード失敗');
         }
     }
 
@@ -345,7 +345,7 @@ export class RemoveZerosUI {
             this.toolActions.style.display = 'none';
         }
 
-        this.updateStatus('Ready');
+        this.updateStatus('準備完了');
     }
 
     showError(message) {

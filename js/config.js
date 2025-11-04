@@ -38,22 +38,22 @@ export const CONFIG = {
 
     // Status Messages
     STATUS: {
-        READY: 'Ready',
-        LOADING: 'Loading...',
-        PROCESSING: 'Processing...',
-        SUCCESS: 'Success',
-        ERROR: 'Error'
+        READY: '準備完了',
+        LOADING: '読み込み中...',
+        PROCESSING: '処理中...',
+        SUCCESS: '成功',
+        ERROR: 'エラー'
     },
 
     // Validation Messages
     VALIDATION_MESSAGES: {
-        VALID: 'Valid Unity animation format',
-        NO_CONTENT: 'No content',
-        INVALID_HEADER: 'Invalid YAML header - must start with "%YAML 1.1"',
-        NO_ANIMATION_CLIP: 'Missing AnimationClip definition',
-        INVALID_FORMAT: 'Invalid animation format',
-        PARSE_ERROR: 'Parse error',
-        FILE_TOO_LARGE: 'File is too large (max 10MB)',
-        INVALID_FILE_TYPE: 'Invalid file type - must be .anim'
+        VALID: '有効なUnityアニメーション形式',
+        NO_CONTENT: '内容なし',
+        INVALID_HEADER: '無効なYAMLヘッダー - "%YAML 1.1"で始まる必要があります',
+        NO_ANIMATION_CLIP: 'AnimationClip定義が見つかりません',
+        INVALID_FORMAT: '無効なアニメーション形式',
+        PARSE_ERROR: '解析エラー',
+        FILE_TOO_LARGE: 'ファイルが大きすぎます（最大10MB）',
+        INVALID_FILE_TYPE: '無効なファイルタイプ - .animである必要があります'
     }
 };

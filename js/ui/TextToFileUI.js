@@ -106,11 +106,11 @@ export class TextToFileUI {
         const statusText = document.getElementById('status-text');
         if (statusText) {
             if (state === 'valid') {
-                statusText.textContent = 'Ready to download';
+                statusText.textContent = 'ダウンロード可能';
             } else if (state === 'invalid') {
-                statusText.textContent = 'Invalid format';
+                statusText.textContent = '無効な形式';
             } else {
-                statusText.textContent = 'Ready';
+                statusText.textContent = '準備完了';
             }
         }
     }
@@ -120,7 +120,7 @@ export class TextToFileUI {
 
         if (errors.length > 0) {
             this.errorDisplay.innerHTML = `
-                <strong>Validation Errors:</strong>
+                <strong>バリデーションエラー:</strong>
                 <ul style="margin: 8px 0 0 20px;">
                     ${errors.map(err => `<li>${err}</li>`).join('')}
                 </ul>
@@ -169,12 +169,12 @@ export class TextToFileUI {
         const success = FileHandler.downloadAsFile(content, filename);
 
         if (success) {
-            this.updateStatusBar('valid', `Downloaded: ${filename}`);
+            this.updateStatusBar('valid', `ダウンロード完了: ${filename}`);
             setTimeout(() => {
-                this.updateStatusBar('valid', 'Ready to download');
+                this.updateStatusBar('valid', 'ダウンロード可能');
             }, 3000);
         } else {
-            this.updateStatusBar('invalid', 'Download failed');
+            this.updateStatusBar('invalid', 'ダウンロード失敗');
         }
     }
 

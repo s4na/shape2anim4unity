@@ -69,7 +69,7 @@ export class BlendShapeUI {
         this.infoSection.style.display = 'none';
         this.downloadButton.style.display = 'none';
         this.generateButton.disabled = true;
-        this.updateValidationStatus('No content', false);
+        this.updateValidationStatus('内容なし', false);
         this.errorDisplay.textContent = '';
         this.errorDisplay.style.display = 'none';
         document.getElementById('single-frame-options').style.display = 'block';
@@ -80,7 +80,7 @@ export class BlendShapeUI {
         const content = this.jsonInput.value.trim();
 
         if (!content) {
-            this.updateValidationStatus('No content', false);
+            this.updateValidationStatus('内容なし', false);
             this.generateButton.disabled = true;
             this.infoSection.style.display = 'none';
             this.errorDisplay.textContent = '';
@@ -95,18 +95,18 @@ export class BlendShapeUI {
                 const frames = BlendShapeWeightImporter.parseMultipleFrames(content, frameRate);
 
                 if (frames.length === 0) {
-                    throw new Error('No valid frames found');
+                    throw new Error('有効なフレームが見つかりませんでした');
                 }
 
                 this.parsedData = { frames, isMultiFrame: true };
-                this.updateValidationStatus(`Valid - ${frames.length} frames found`, true);
+                this.updateValidationStatus(`有効 - ${frames.length}フレームが見つかりました`, true);
                 this.showInfo(frames[0].values.length, frames.length);
                 this.generateButton.disabled = false;
             } else {
                 // Single frame mode
                 const blendShapeData = BlendShapeWeightImporter.parseGenericPropertyJSON(content);
                 this.parsedData = { blendShapeData, isMultiFrame: false };
-                this.updateValidationStatus('Valid BlendShapeWeights format', true);
+                this.updateValidationStatus('有効なBlendShapeWeights形式', true);
                 this.showInfo(blendShapeData.values.length, 1);
                 this.generateButton.disabled = false;
             }
@@ -114,8 +114,8 @@ export class BlendShapeUI {
             this.errorDisplay.textContent = '';
             this.errorDisplay.style.display = 'none';
         } catch (error) {
-            this.updateValidationStatus('Invalid format', false);
-            this.errorDisplay.textContent = `Error: ${error.message}`;
+            this.updateValidationStatus('無効な形式', false);
+            this.errorDisplay.textContent = `エラー: ${error.message}`;
             this.errorDisplay.style.display = 'block';
             this.generateButton.disabled = true;
             this.infoSection.style.display = 'none';
@@ -158,11 +158,11 @@ export class BlendShapeUI {
             }
 
             this.downloadButton.style.display = 'inline-flex';
-            this.updateStatus('Animation generated successfully!', 'success');
+            this.updateStatus('アニメーションの生成に成功しました！', 'success');
         } catch (error) {
-            this.errorDisplay.textContent = `Generation error: ${error.message}`;
+            this.errorDisplay.textContent = `生成エラー: ${error.message}`;
             this.errorDisplay.style.display = 'block';
-            this.updateStatus('Failed to generate animation', 'error');
+            this.updateStatus('アニメーションの生成に失敗しました', 'error');
         }
     }
 
@@ -173,7 +173,7 @@ export class BlendShapeUI {
 
         const filename = `${this.animationNameInput.value || 'BlendShapeAnimation'}.anim`;
         FileHandler.downloadFile(this.generatedYAML, filename);
-        this.updateStatus(`Downloaded: ${filename}`, 'success');
+        this.updateStatus(`ダウンロード完了: ${filename}`, 'success');
     }
 
     showInfo(blendShapeCount, frameCount) {

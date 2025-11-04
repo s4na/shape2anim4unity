@@ -157,16 +157,16 @@ export class ZeroRemover {
         const messages = [];
 
         if (stats.removedKeyframes === 0) {
-            messages.push('No keyframes were removed.');
+            messages.push('キーフレームは削除されませんでした。');
         } else {
-            messages.push(`Removed ${stats.removedKeyframes} keyframe(s) from ${stats.originalKeyframes} total.`);
+            messages.push(`全${stats.originalKeyframes}個のキーフレームから${stats.removedKeyframes}個を削除しました。`);
         }
 
         if (stats.removedCurves > 0) {
-            messages.push(`Removed ${stats.removedCurves} empty curve(s).`);
+            messages.push(`${stats.removedCurves}個の空のカーブを削除しました。`);
         }
 
-        messages.push(`Result: ${stats.remainingKeyframes} keyframe(s) in ${stats.remainingCurves} curve(s).`);
+        messages.push(`結果: ${stats.remainingCurves}個のカーブに${stats.remainingKeyframes}個のキーフレームが残っています。`);
 
         return messages.join(' ');
     }

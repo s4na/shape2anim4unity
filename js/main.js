@@ -44,7 +44,7 @@ class UnityAnimationEditor {
             console.log('Unity Animation Editor initialized successfully');
         } catch (error) {
             console.error('Failed to initialize application:', error);
-            this.showError('Application failed to initialize. Please refresh the page.');
+            this.showError('アプリケーションの初期化に失敗しました。ページを更新してください。');
         }
     }
 

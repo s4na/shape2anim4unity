@@ -14,7 +14,7 @@ export class BlendShapeWeightImporter {
             const data = JSON.parse(cleanJson);
 
             if (!data || !data.name || data.name !== 'm_BlendShapeWeights') {
-                throw new Error('Invalid BlendShapeWeights format - expected m_BlendShapeWeights property');
+                throw new Error('無効なBlendShapeWeights形式 - m_BlendShapeWeightsプロパティが必要です');
             }
 
             // Extract blend shape values from the nested Array structure
@@ -36,7 +36,7 @@ export class BlendShapeWeightImporter {
                 values: values
             };
         } catch (error) {
-            throw new Error(`Failed to parse JSON: ${error.message}`);
+            throw new Error(`JSONの解析に失敗しました: ${error.message}`);
         }
     }
 
@@ -60,7 +60,7 @@ export class BlendShapeWeightImporter {
         } = options;
 
         if (!frames || frames.length === 0) {
-            throw new Error('No frames provided');
+            throw new Error('フレームが提供されていません');
         }
 
         // Build m_FloatCurves from frames

@@ -10,7 +10,7 @@ export class FileHandler {
     static readAsText(file) {
         return new Promise((resolve, reject) => {
             if (!file) {
-                reject(new Error('No file provided'));
+                reject(new Error('ファイルが提供されていません'));
                 return;
             }
 
@@ -38,7 +38,7 @@ export class FileHandler {
             };
 
             reader.onerror = () => {
-                reject(new Error('Failed to read file'));
+                reject(new Error('ファイルの読み込みに失敗しました'));
             };
 
             reader.readAsText(file);
@@ -87,10 +87,10 @@ export class FileHandler {
      * @returns {string} - Formatted file size
      */
     static formatFileSize(bytes) {
-        if (bytes === 0) return '0 Bytes';
+        if (bytes === 0) return '0 バイト';
 
         const k = 1024;
-        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const sizes = ['バイト', 'KB', 'MB', 'GB'];
         const i = Math.floor(Math.log(bytes) / Math.log(k));
 
         return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + ' ' + sizes[i];
@@ -103,7 +103,7 @@ export class FileHandler {
      */
     static validateFile(file) {
         if (!file) {
-            return { valid: false, error: 'No file provided' };
+            return { valid: false, error: 'ファイルが提供されていません' };
         }
 
         if (file.size > CONFIG.MAX_FILE_SIZE) {
