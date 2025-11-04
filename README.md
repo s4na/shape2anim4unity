@@ -24,11 +24,25 @@ A web-based tool for Unity developers to edit and manipulate Unity animation fil
 - View statistics and size reduction
 - Download optimized file
 
-### 3. Additional Features
+### 3. BlendShape Import
+- Import Unity BlendShapeWeights from GenericPropertyJSON format
+- Convert blend shape data to Unity animation files
+- Support for both single-frame (static pose) and multi-frame animations
+- Automatic filtering of zero-value blend shapes
+- Configurable options:
+  - Custom animation name
+  - Mesh path in hierarchy
+  - Sample rate (FPS)
+  - Animation duration
+- Real-time validation and statistics
+- Direct download as .anim file
+
+### 4. Additional Features
 - Dark/Light theme toggle
 - Drag and drop file upload
 - Privacy-focused (all processing happens locally)
 - Mobile-responsive design
+- Multi-language support (English/Japanese)
 
 ## Getting Started
 
@@ -223,13 +237,13 @@ To contribute to this project:
 
 ### Running Tests
 
-This project includes a comprehensive test suite using Jest.
+This project includes a comprehensive test suite using Jest and Playwright.
 
 ```bash
 # Install dependencies
 npm install
 
-# Run tests
+# Run unit and integration tests with Jest
 npm test
 
 # Run tests in watch mode
@@ -237,7 +251,29 @@ npm run test:watch
 
 # Generate coverage report
 npm run test:coverage
+
+# Run E2E tests with Playwright (headless browser)
+npm run test:e2e
+
+# Run E2E tests with UI
+npm run test:e2e:ui
+
+# Run E2E tests in headed mode (visible browser)
+npm run test:e2e:headed
 ```
+
+#### Test Coverage
+
+- **Unit Tests**: Parser, serializer, and processor logic
+- **Integration Tests**: BlendShape weight import workflow from text file to animation
+- **E2E Tests**: Full browser-based testing of UI interactions (Playwright)
+
+The integration test suite includes comprehensive testing of the BlendShape import feature:
+- Parsing Unity GenericPropertyJSON format from text files
+- Generating valid Unity animation files
+- Multi-frame animation support
+- Data integrity validation
+- End-to-end workflow verification
 
 Tests are automatically run on push and pull requests via GitHub Actions.
 
