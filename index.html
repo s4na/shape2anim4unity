@@ -54,6 +54,12 @@
                 </svg>
                 Remove Zeros
             </button>
+            <button class="tab-button" data-tab="blendshape-import">
+                <svg class="tab-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 1L3 6h3v6h4V6h3L8 1z"/>
+                </svg>
+                BlendShape Import
+            </button>
             <button class="tab-button" data-tab="about">
                 <svg class="tab-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                     <path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 3a1 1 0 011 1v4a1 1 0 11-2 0V5a1 1 0 011-1zm0 8a1 1 0 110-2 1 1 0 010 2z"/>
@@ -250,6 +256,115 @@
                 </div>
             </div>
 
+            <!-- BlendShape Import Tab -->
+            <div id="blendshape-import" class="tab-content">
+                <div class="tab-header">
+                    <h2>BlendShape Weight Importer</h2>
+                    <p>Paste Unity BlendShapeWeights JSON data and convert it to an animation file</p>
+                </div>
+
+                <div class="editor-container">
+                    <div class="editor-header">
+                        <label for="blendshape-json-input">BlendShapeWeights JSON</label>
+                        <div class="validation-status" id="blendshape-validation-status">
+                            <span class="status-indicator"></span>
+                            <span class="status-text" id="blendshape-validation-text">No content</span>
+                        </div>
+                    </div>
+
+                    <textarea
+                        id="blendshape-json-input"
+                        class="animation-editor"
+                        placeholder="Paste BlendShapeWeights JSON here...&#10;&#10;Example:&#10;GenericPropertyJSON:{&quot;name&quot;:&quot;m_BlendShapeWeights&quot;,&quot;type&quot;:-1,&quot;arraySize&quot;:513,&quot;arrayType&quot;:&quot;float&quot;,...}&#10;&#10;For multi-frame animation, paste one JSON per line."
+                        spellcheck="false"
+                    ></textarea>
+
+                    <div class="error-display" id="blendshape-error-display"></div>
+
+                    <!-- Info Section -->
+                    <div class="info-section" id="blendshape-info-section" style="display: none;">
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="info-label">Total BlendShapes:</span>
+                                <span class="info-value" id="blendshape-count">0</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Non-zero values:</span>
+                                <span class="info-value" id="blendshape-nonzero-count">0</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Frames:</span>
+                                <span class="info-value" id="blendshape-frame-count">1</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Options Section -->
+                    <div class="options-section">
+                        <h3>Animation Options</h3>
+
+                        <div class="option-group">
+                            <label for="blendshape-animation-name">Animation Name:</label>
+                            <input type="text" id="blendshape-animation-name" class="text-input" value="BlendShapeAnimation">
+                        </div>
+
+                        <div class="option-group">
+                            <label for="blendshape-mesh-path">Mesh Path (optional):</label>
+                            <input type="text" id="blendshape-mesh-path" class="text-input" placeholder="e.g., Character/Body">
+                        </div>
+
+                        <div class="option-group">
+                            <label for="blendshape-sample-rate">Sample Rate:</label>
+                            <input type="number" id="blendshape-sample-rate" class="text-input" value="60" min="1" max="120">
+                        </div>
+
+                        <div class="option-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="blendshape-multi-frame">
+                                <span>Multi-frame mode (one JSON per line)</span>
+                            </label>
+                        </div>
+
+                        <div id="single-frame-options">
+                            <div class="option-group">
+                                <label for="blendshape-duration">Duration (seconds):</label>
+                                <input type="number" id="blendshape-duration" class="text-input" value="1.0" min="0.01" step="0.1">
+                            </div>
+                        </div>
+
+                        <div id="multi-frame-options" style="display: none;">
+                            <div class="option-group">
+                                <label for="blendshape-frame-rate">Frame Rate (FPS):</label>
+                                <input type="number" id="blendshape-frame-rate" class="text-input" value="60" min="1" max="120">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="editor-footer">
+                        <div class="action-buttons">
+                            <button id="blendshape-clear-button" class="button button-secondary">
+                                <svg class="button-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M5 3h6a1 1 0 011 1v8a1 1 0 01-1 1H5a1 1 0 01-1-1V4a1 1 0 011-1zM3 3h10M6 6v4M10 6v4"/>
+                                </svg>
+                                Clear
+                            </button>
+                            <button id="blendshape-generate-button" class="button button-primary" disabled>
+                                <svg class="button-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M8 2v6l4-3-4-3zM3 8l4 3V5L3 8z"/>
+                                </svg>
+                                Generate Animation
+                            </button>
+                            <button id="blendshape-download-button" class="button button-success" style="display: none;">
+                                <svg class="button-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M8 1v10m0 0L5 8m3 3l3-3M2 12h12"/>
+                                </svg>
+                                Download .anim
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- About Tab -->
             <div id="about" class="tab-content">
                 <div class="tab-header">
@@ -267,6 +382,7 @@
                         <ul>
                             <li><strong>Text to File Converter:</strong> Paste Unity animation YAML content and download it as a .anim file</li>
                             <li><strong>Remove Zeros:</strong> Upload an animation file and remove zero-value keyframes to optimize file size</li>
+                            <li><strong>BlendShape Import:</strong> Convert Unity BlendShapeWeights JSON data to animation files</li>
                             <li><strong>Privacy-Focused:</strong> All processing happens in your browser - no data is sent to any server</li>
                             <li><strong>Open Source:</strong> Free to use and modify under MIT License</li>
                         </ul>
@@ -290,6 +406,15 @@
                             <li>Click "Process Animation"</li>
                             <li>Review the statistics showing what was removed</li>
                             <li>Download the optimized file</li>
+                        </ol>
+
+                        <h4>BlendShape Import</h4>
+                        <ol>
+                            <li>Copy BlendShapeWeights JSON data from Unity</li>
+                            <li>Paste it into the text editor</li>
+                            <li>Configure animation options (name, mesh path, duration)</li>
+                            <li>Click "Generate Animation"</li>
+                            <li>Download the .anim file</li>
                         </ol>
                     </section>
 

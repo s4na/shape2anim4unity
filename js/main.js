@@ -3,6 +3,7 @@ import { TabManager } from './ui/TabManager.js';
 import { ThemeManager } from './ui/ThemeManager.js';
 import { TextToFileUI } from './ui/TextToFileUI.js';
 import { RemoveZerosUI } from './ui/RemoveZerosUI.js';
+import { BlendShapeUI } from './ui/BlendShapeUI.js';
 
 // Application class
 class UnityAnimationEditor {
@@ -11,6 +12,7 @@ class UnityAnimationEditor {
         this.themeManager = null;
         this.textToFileUI = null;
         this.removeZerosUI = null;
+        this.blendShapeUI = null;
 
         this.init();
     }
@@ -37,6 +39,7 @@ class UnityAnimationEditor {
             // Initialize UI controllers for each tab
             this.textToFileUI = new TextToFileUI();
             this.removeZerosUI = new RemoveZerosUI();
+            this.blendShapeUI = new BlendShapeUI();
 
             console.log('Unity Animation Editor initialized successfully');
         } catch (error) {
