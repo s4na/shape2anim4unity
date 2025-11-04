@@ -29,6 +29,9 @@ build/
 # Dependencies (if npm is added later)
 node_modules/
 
+# Test Coverage
+coverage/
+
 # Environment Files
 .env
 .env.local
