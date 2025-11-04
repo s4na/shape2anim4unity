@@ -38,7 +38,7 @@ export const CONFIG = {
 
     // Language
     LANGUAGE_KEY: 'unity-anim-editor-language',
-    DEFAULT_LANGUAGE: 'en',
+    DEFAULT_LANGUAGE: 'ja',
 
     // Status Messages
     STATUS: {
