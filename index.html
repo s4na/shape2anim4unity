@@ -43,7 +43,7 @@
     <main class="app-main">
         <!-- Navigation Tabs -->
         <nav class="tab-navigation">
-            <button class="tab-button active" data-tab="text-to-file">
+            <button class="tab-button" data-tab="text-to-file">
                 <svg class="tab-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                     <path d="M4 2h8a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V4a2 2 0 012-2z"/>
                 </svg>
@@ -55,7 +55,7 @@
                 </svg>
                 Remove Zeros
             </button>
-            <button class="tab-button" data-tab="blendshape-import">
+            <button class="tab-button active" data-tab="blendshape-import">
                 <svg class="tab-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                     <path d="M8 1L3 6h3v6h4V6h3L8 1z"/>
                 </svg>
@@ -72,7 +72,7 @@
         <!-- Tab Content -->
         <div class="tab-content-container">
             <!-- Text to File Tab -->
-            <div id="text-to-file" class="tab-content active">
+            <div id="text-to-file" class="tab-content">
                 <div class="tab-header">
                     <h2>Text to Animation File Converter</h2>
                     <p>Paste Unity animation text content and download it as a .anim file</p>
@@ -258,7 +258,7 @@
             </div>
 
             <!-- BlendShape Import Tab -->
-            <div id="blendshape-import" class="tab-content">
+            <div id="blendshape-import" class="tab-content active">
                 <div class="tab-header">
                     <h2>BlendShape Weight Importer</h2>
                     <p>Paste Unity BlendShapeWeights JSON data and convert it to an animation file</p>
