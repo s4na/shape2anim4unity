@@ -36,6 +36,10 @@ export const CONFIG = {
     THEME_KEY: 'unity-anim-editor-theme',
     DEFAULT_THEME: 'light',
 
+    // Language
+    LANGUAGE_KEY: 'unity-anim-editor-language',
+    DEFAULT_LANGUAGE: 'en',
+
     // Status Messages
     STATUS: {
         READY: 'Ready',
