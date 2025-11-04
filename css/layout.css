@@ -136,23 +136,7 @@ body {
 .status-left,
 .status-right {
     display: flex;
-    align-items: center;
     gap: 16px;
-}
-
-.status-separator {
-    color: var(--text-tertiary);
-}
-
-.source-link {
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: color var(--transition-fast);
-}
-
-.source-link:hover {
-    color: var(--primary-color);
-    text-decoration: underline;
 }
 
 /* Responsive Layout */
