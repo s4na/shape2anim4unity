@@ -133,12 +133,14 @@ export class LocalizationManager {
         tabs.forEach(({ selector, text }) => {
             const button = document.querySelector(`.tab-button${selector}`);
             if (button) {
-                const textNode = Array.from(button.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
-                if (textNode) {
-                    textNode.textContent = text;
-                } else {
-                    button.appendChild(document.createTextNode(text));
-                }
+                // Remove all existing text nodes
+                Array.from(button.childNodes).forEach(node => {
+                    if (node.nodeType === Node.TEXT_NODE) {
+                        node.remove();
+                    }
+                });
+                // Add new text node with proper spacing
+                button.appendChild(document.createTextNode(' ' + text));
             }
         });
     }
