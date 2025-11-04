@@ -215,10 +215,31 @@ To contribute to this project:
 1. Fork the repository
 2. Create a feature branch: `git checkout -b feature-name`
 3. Make your changes
-4. Test thoroughly in multiple browsers
-5. Commit your changes: `git commit -m "Add feature"`
-6. Push to the branch: `git push origin feature-name`
-7. Submit a pull request
+4. Run tests: `npm test`
+5. Test thoroughly in multiple browsers
+6. Commit your changes: `git commit -m "Add feature"`
+7. Push to the branch: `git push origin feature-name`
+8. Submit a pull request
+
+### Running Tests
+
+This project includes a comprehensive test suite using Jest.
+
+```bash
+# Install dependencies
+npm install
+
+# Run tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Generate coverage report
+npm run test:coverage
+```
+
+Tests are automatically run on push and pull requests via GitHub Actions.
 
 ### Coding Standards
 - Use ES6+ JavaScript features
