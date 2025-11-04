@@ -92,7 +92,7 @@ export class LocalizationManager {
         if (languageToggle) {
             languageToggle.setAttribute('aria-label', t.header.toggleLanguage);
             languageToggle.setAttribute('title', t.header.toggleLanguage);
-            languageToggle.textContent = this.currentLanguage === 'en' ? 'JP' : 'EN';
+            languageToggle.textContent = this.currentLanguage === 'en' ? 'EN' : 'JP';
         }
 
         // Update tab buttons
