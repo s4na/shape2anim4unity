@@ -253,13 +253,15 @@ AnimationClip:
 
 ### テストの実行
 
-このプロジェクトはJestを使用した包括的なテストスイートを含んでいます。
+このプロジェクトは、Jestを使用したユニットテストとPlaywrightを使用したE2Eブラウザテストを含んでいます。
+
+#### ユニットテスト
 
 ```bash
 # 依存関係のインストール
 npm install
 
-# テストの実行
+# ユニットテストの実行
 npm test
 
 # ウォッチモードでテストを実行
@@ -268,6 +270,32 @@ npm run test:watch
 # カバレッジレポートの生成
 npm run test:coverage
 ```
+
+#### E2Eブラウザテスト
+
+実際のブラウザでの動作確認を行うE2Eテストも用意されています。
+
+```bash
+# Playwrightブラウザのインストール（初回のみ）
+npx playwright install
+
+# すべてのブラウザでE2Eテストを実行
+npm run test:e2e
+
+# Chromiumのみでテストを実行
+npm run test:e2e:chromium
+
+# ブラウザを表示してテストを実行
+npm run test:e2e:headed
+
+# Playwright Test UIでテストを実行
+npm run test:e2e:ui
+
+# ユニットテストとE2Eテストの両方を実行
+npm run test:all
+```
+
+E2Eテストの詳細については [e2e/README.md](e2e/README.md) を参照してください。
 
 テストはpushとプルリクエスト時にGitHub Actionsで自動実行されます。
 

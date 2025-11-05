@@ -33,6 +33,11 @@ node_modules/
 coverage/
 .nyc_output/
 
+# Playwright
+playwright-report/
+test-results/
+.playwright/
+
 # Environment Files
 .env
 .env.local
