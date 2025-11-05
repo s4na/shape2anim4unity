@@ -32,6 +32,9 @@
   ],
   "author": "s4na",
   "license": "MIT",
+  "engines": {
+    "node": ">=24.0.0"
+  },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
     "@playwright/test": "^1.56.1",
