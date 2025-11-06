@@ -1,4 +1,4 @@
-# shape2anim
+# shape2anim4unity
 
 [![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://s4na.github.io/unity-animation-editor/)
 [![Tests](https://github.com/s4na/unity-animation-editor/workflows/Tests/badge.svg)](https://github.com/s4na/unity-animation-editor/actions)
