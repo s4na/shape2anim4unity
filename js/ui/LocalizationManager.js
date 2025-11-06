@@ -3,9 +3,24 @@ import { CONFIG } from '../config.js';
 
 export class LocalizationManager {
     constructor() {
+        this.ensureCorrectDefaultLanguage();
         this.currentLanguage = this.loadLanguage();
         this.translations = {};
         this.listeners = [];
+    }
+
+    ensureCorrectDefaultLanguage() {
+        // Prioritize HTML lang attribute over localStorage
+        const htmlLang = document.documentElement.getAttribute('lang');
+        const saved = localStorage.getItem(CONFIG.LANGUAGE_KEY);
+
+        // If HTML has a language set and localStorage has a different value, reset to HTML lang
+        if (htmlLang && (htmlLang === 'ja' || htmlLang === 'en')) {
+            if (!saved || saved !== htmlLang) {
+                // Set localStorage to match HTML lang attribute
+                localStorage.setItem(CONFIG.LANGUAGE_KEY, htmlLang);
+            }
+        }
     }
 
     async init() {
