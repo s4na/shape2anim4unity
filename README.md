@@ -1,7 +1,7 @@
 # shape2anim4unity
 
-[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://s4na.github.io/unity-animation-editor/)
-[![Tests](https://github.com/s4na/unity-animation-editor/workflows/Tests/badge.svg)](https://github.com/s4na/unity-animation-editor/actions)
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://s4na.github.io/shape2anim4unity/)
+[![Tests](https://github.com/s4na/shape2anim4unity/actions/workflows/test.yml/badge.svg)](https://github.com/s4na/shape2anim4unity/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Unityのブレンドシェイプをコピーして貼り付けたらアニメーションファイルができるやつ。インストール不要 - すべての処理がブラウザ上でローカルに実行されます。
@@ -50,13 +50,13 @@ Unityのブレンドシェイプをコピーして貼り付けたらアニメー
 ## はじめに
 
 ### オプション1: オンラインで使用
-GitHub Pagesにアクセス: [https://s4na.github.io/unity-animation-editor/](https://s4na.github.io/unity-animation-editor/)
+GitHub Pagesにアクセス: [https://s4na.github.io/shape2anim4unity/](https://s4na.github.io/shape2anim4unity/)
 
 ### オプション2: ローカルで実行
 1. このリポジトリをクローン:
    ```bash
-   git clone https://github.com/s4na/unity-animation-editor.git
-   cd shape2anim
+   git clone https://github.com/s4na/shape2anim4unity.git
+   cd shape2anim4unity
    ```
 
 2. ローカルWebサーバーでファイルを配信。以下のいずれかの方法を使用できます：
