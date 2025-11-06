@@ -10,8 +10,8 @@ test.describe('Text to File Converter', () => {
   });
 
   test('should load the page successfully', async ({ page }) => {
-    await expect(page).toHaveTitle('Unity Animation Editor');
-    await expect(page.locator('.app-header h1')).toContainText('Unity Animation Editor');
+    await expect(page).toHaveTitle('shape2anim');
+    await expect(page.locator('.app-header h1')).toContainText('shape2anim');
   });
 
   test('should show validation status as "No content" initially', async ({ page }) => {

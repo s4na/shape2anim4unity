@@ -1,6 +1,6 @@
 # E2E Browser Tests
 
-このディレクトリには、Unity Animation Editorのブラウザでの動作確認を行うE2Eテストが含まれています。
+このディレクトリには、shape2animのブラウザでの動作確認を行うE2Eテストが含まれています。
 
 ## 概要
 

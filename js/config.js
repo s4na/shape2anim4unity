@@ -1,7 +1,7 @@
 // Application Configuration
 export const CONFIG = {
     // Application Info
-    APP_NAME: 'Unity Animation Editor',
+    APP_NAME: 'shape2anim',
     VERSION: '1.0.0',
 
     // File Handling

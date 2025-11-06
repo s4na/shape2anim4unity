@@ -1,7 +1,7 @@
 // English translations
 export const translations = {
     app: {
-        title: 'Unity Animation Editor'
+        title: 'shape2anim'
     },
 
     header: {
@@ -79,9 +79,9 @@ export const translations = {
     },
 
     about: {
-        title: 'About Unity Animation Editor',
+        title: 'About shape2anim',
         whatIsThis: 'What is this tool?',
-        whatIsThisContent: 'Unity Animation Editor is a web-based tool for Unity developers to edit and manipulate Unity animation files (.anim) directly in the browser. No installation required, everything runs locally in your browser.',
+        whatIsThisContent: 'shape2anim is a web-based tool to convert shape data to Unity animation files. No installation required, everything runs locally in your browser.',
         features: 'Features',
         textToFileConverterTitle: 'Text to File Converter:',
         textToFileConverterDesc: 'Paste Unity animation YAML content and download it as a .anim file',
