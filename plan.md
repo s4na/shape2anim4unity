@@ -1,4 +1,4 @@
-# Unity Animation Editor - Project Plan
+# shape2anim - Project Plan
 
 ## 1. Project Overview
 

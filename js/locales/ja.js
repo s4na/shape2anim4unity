@@ -1,7 +1,7 @@
 // Japanese translations
 export const translations = {
     app: {
-        title: 'Unity アニメーションエディター'
+        title: 'shape2anim'
     },
 
     header: {
@@ -57,7 +57,7 @@ export const translations = {
 
     blendShapeImport: {
         title: 'BlendShape ウェイトインポーター',
-        description: 'Unity BlendShapeWeights の JSON データを貼り付けてアニメーションファイルに変換します',
+        description: 'Unityのブレンドシェイプをコピーして貼り付けたらアニメーションファイルができるやつ',
         editorLabel: 'BlendShapeWeights JSON',
         placeholder: 'BlendShapeWeights JSON をここに貼り付けてください...\n\n例:\nGenericPropertyJSON:{"name":"m_BlendShapeWeights","type":-1,"arraySize":513,"arrayType":"float",...}',
         noContent: 'コンテンツなし',
@@ -79,9 +79,9 @@ export const translations = {
     },
 
     about: {
-        title: 'Unity アニメーションエディターについて',
+        title: 'shape2anim について',
         whatIsThis: 'このツールは何ですか？',
-        whatIsThisContent: 'Unity Animation Editor は、Unity 開発者が Unity アニメーションファイル (.anim) をブラウザで直接編集・操作できる Web ベースのツールです。インストール不要で、すべてブラウザ内でローカルに実行されます。',
+        whatIsThisContent: 'shape2anim は、Unityのブレンドシェイプをコピーして貼り付けたらアニメーションファイルができるやつです。インストール不要で、すべてブラウザ内でローカルに実行されます。',
         features: '機能',
         textToFileConverterTitle: 'テキストからファイルへの変換:',
         textToFileConverterDesc: 'Unity アニメーションの YAML コンテンツを貼り付けて .anim ファイルとしてダウンロード',

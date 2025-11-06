@@ -1,10 +1,10 @@
-# Unity Animation Editor
+# shape2anim
 
 [![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://s4na.github.io/unity-animation-editor/)
 [![Tests](https://github.com/s4na/unity-animation-editor/workflows/Tests/badge.svg)](https://github.com/s4na/unity-animation-editor/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Unity開発者向けのWebベースツールで、Unityアニメーションファイル（.anim）をブラウザ上で直接編集・操作できます。インストール不要 - すべての処理がブラウザ上でローカルに実行されます。
+Unityのブレンドシェイプをコピーして貼り付けたらアニメーションファイルができるやつ。インストール不要 - すべての処理がブラウザ上でローカルに実行されます。
 
 **🚀 [ライブデモを試す](https://s4na.github.io/unity-animation-editor/)**
 
@@ -56,7 +56,7 @@ GitHub Pagesにアクセス: [https://s4na.github.io/unity-animation-editor/](ht
 1. このリポジトリをクローン:
    ```bash
    git clone https://github.com/s4na/unity-animation-editor.git
-   cd unity-animation-editor
+   cd shape2anim
    ```
 
 2. ローカルWebサーバーでファイルを配信。以下のいずれかの方法を使用できます：
@@ -148,7 +148,7 @@ GitHub Pagesにアクセス: [https://s4na.github.io/unity-animation-editor/](ht
 
 ### ファイル構成
 ```
-unity-animation-editor/
+shape2anim/
 ├── index.html              # メインHTMLファイル
 ├── README.md              # このファイル
 ├── plan.md                # プロジェクト計画と仕様

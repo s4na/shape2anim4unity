@@ -2,7 +2,7 @@
 
 ## Overview
 
-I have successfully implemented a working MVP (Minimum Viable Product) of the Unity Animation Editor as a static website based on the plan.md specifications. The application is fully functional and ready to be deployed on GitHub Pages.
+I have successfully implemented a working MVP (Minimum Viable Product) of shape2anim as a static website based on the plan.md specifications. The application is fully functional and ready to be deployed on GitHub Pages.
 
 ## Created Files
 

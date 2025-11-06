@@ -1,7 +1,7 @@
 {
-  "name": "unity-animation-editor",
+  "name": "shape2anim",
   "version": "1.0.0",
-  "description": "A web-based tool for Unity developers to edit and manipulate Unity animation files",
+  "description": "A web-based tool to convert shape data to Unity animation files",
   "type": "module",
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",

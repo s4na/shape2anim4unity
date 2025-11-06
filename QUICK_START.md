@@ -8,7 +8,7 @@ If you have Python installed:
 
 ```bash
 # Navigate to the project directory
-cd unity-animation-editor
+cd shape2anim
 
 # Python 3
 python -m http.server 8000
@@ -24,7 +24,7 @@ Then open your browser to: http://localhost:8000
 If you have Node.js installed:
 
 ```bash
-cd unity-animation-editor
+cd shape2anim
 npx serve
 ```
 
@@ -35,7 +35,7 @@ Then open the URL shown in the terminal (usually http://localhost:3000)
 If you have PHP installed:
 
 ```bash
-cd unity-animation-editor
+cd shape2anim
 php -S localhost:8000
 ```
 
