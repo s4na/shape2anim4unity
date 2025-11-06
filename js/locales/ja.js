@@ -59,7 +59,9 @@ export const translations = {
         title: 'BlendShape ウェイトインポーター',
         description: 'Unity BlendShapeWeights の JSON データを貼り付けてアニメーションファイルに変換します',
         editorLabel: 'BlendShapeWeights JSON',
+        placeholder: 'BlendShapeWeights JSON をここに貼り付けてください...\n\n例:\nGenericPropertyJSON:{"name":"m_BlendShapeWeights","type":-1,"arraySize":513,"arrayType":"float",...}',
         noContent: 'コンテンツなし',
+        excludeZeros: '0を除外する',
         totalBlendShapes: '合計 BlendShape 数:',
         nonZeroValues: '非ゼロ値:',
         frames: 'フレーム:',
@@ -72,7 +74,8 @@ export const translations = {
         frameRate: 'フレームレート (FPS):',
         clearButton: 'クリア',
         generateButton: 'アニメーションを生成',
-        downloadButton: '.anim をダウンロード'
+        downloadButton: '.anim をダウンロード',
+        errorPrefix: 'エラー: '
     },
 
     about: {
@@ -134,5 +137,14 @@ export const translations = {
         parseError: 'パースエラー',
         fileTooLarge: 'ファイルが大きすぎます（最大 10MB）',
         invalidFileType: '無効なファイルタイプ - .anim である必要があります'
+    },
+
+    errors: {
+        initFailed: 'アプリケーションの初期化に失敗しました。ページを更新してください。'
+    },
+
+    meta: {
+        description: 'Unity BlendShape ウェイトインポーター - BlendShapeWeights JSON を .anim ファイルに変換',
+        keywords: 'Unity, BlendShape, アニメーション, ツール, Web'
     }
 };

@@ -1,10 +1,12 @@
 // Main Application Entry Point
 import { BlendShapeUI } from './ui/BlendShapeUI.js';
+import { LocalizationManager } from './ui/LocalizationManager.js';
 
 // Application class
 class UnityBlendShapeImporter {
     constructor() {
         this.blendShapeUI = null;
+        this.localizationManager = null;
         this.init();
     }
 
@@ -19,17 +21,27 @@ class UnityBlendShapeImporter {
         }
     }
 
-    initializeApp() {
+    async initializeApp() {
         console.log('Unity BlendShape Importer initializing...');
 
         try {
+            // Initialize Localization Manager
+            this.localizationManager = new LocalizationManager();
+            await this.localizationManager.init();
+
+            // Make localization manager globally available
+            window.localizationManager = this.localizationManager;
+
             // Initialize BlendShape UI
-            this.blendShapeUI = new BlendShapeUI();
+            this.blendShapeUI = new BlendShapeUI(this.localizationManager);
 
             console.log('Unity BlendShape Importer initialized successfully');
         } catch (error) {
             console.error('Failed to initialize application:', error);
-            this.showError('Application failed to initialize. Please refresh the page.');
+            // Use localized error message if available
+            const errorMessage = this.localizationManager?.t('errors.initFailed') ||
+                                  'Application failed to initialize. Please refresh the page.';
+            this.showError(errorMessage);
         }
     }
 

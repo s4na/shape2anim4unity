@@ -5,7 +5,8 @@ import { BlendShapeWeightImporter } from '../processors/BlendShapeWeightImporter
 import { FileHandler } from '../utils/FileHandler.js';
 
 export class BlendShapeUI {
-    constructor() {
+    constructor(localizationManager = null) {
+        this.localizationManager = localizationManager;
         this.initializeElements();
         this.attachEventListeners();
         this.resetState();
@@ -79,7 +80,8 @@ export class BlendShapeUI {
             this.errorDisplay.textContent = '';
             this.errorDisplay.style.display = 'none';
         } catch (error) {
-            this.errorDisplay.textContent = `Error: ${error.message}`;
+            const errorPrefix = this.localizationManager?.t('blendShapeImport.errorPrefix') || 'Error: ';
+            this.errorDisplay.textContent = `${errorPrefix}${error.message}`;
             this.errorDisplay.style.display = 'block';
             this.downloadButton.style.display = 'none';
         }

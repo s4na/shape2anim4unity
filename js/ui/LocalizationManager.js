@@ -279,6 +279,9 @@ export class LocalizationManager {
             statusText.textContent = tab.noContent;
         }
 
+        // Update exclude zeros checkbox label
+        this.updateCheckboxLabel('blendshape-exclude-zeros', tab.excludeZeros);
+
         // Update info labels
         const infoLabels = document.querySelectorAll('#blendshape-info-section .info-label');
         if (infoLabels[0]) infoLabels[0].textContent = tab.totalBlendShapes;
