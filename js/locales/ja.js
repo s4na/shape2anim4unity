@@ -56,9 +56,7 @@ export const translations = {
     },
 
     blendShapeImport: {
-        title: 'BlendShape ウェイトインポーター',
-        description: 'Unityのブレンドシェイプをコピーして貼り付けたらアニメーションファイルができるやつ',
-        editorLabel: 'BlendShapeWeights JSON',
+        title: 'Unityのブレンドシェイプをコピーして貼り付けたらアニメーションファイルができるやつ',
         placeholder: 'BlendShapeWeights JSON をここに貼り付けてください...\n\n例:\nGenericPropertyJSON:{"name":"m_BlendShapeWeights","type":-1,"arraySize":513,"arrayType":"float",...}',
         noContent: 'コンテンツなし',
         excludeZeros: '0を除外する',

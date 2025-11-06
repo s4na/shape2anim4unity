@@ -58,7 +58,6 @@ export const translations = {
     blendShapeImport: {
         title: 'BlendShape Weight Importer',
         description: 'Paste Unity BlendShapeWeights JSON data and convert it to an animation file',
-        editorLabel: 'BlendShapeWeights JSON',
         placeholder: 'Paste BlendShapeWeights JSON here...\n\nExample:\nGenericPropertyJSON:{"name":"m_BlendShapeWeights","type":-1,"arraySize":513,"arrayType":"float",...}',
         noContent: 'No content',
         excludeZeros: 'Exclude zeros',
