@@ -185,16 +185,10 @@ export class LocalizationManager {
 
         // Update buttons
         const clearButton = document.getElementById('clear-button');
-        if (clearButton) {
-            const textNode = Array.from(clearButton.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
-            if (textNode) textNode.textContent = tab.clearButton;
-        }
+        this.updateButtonText(clearButton, tab.clearButton);
 
         const downloadButton = document.getElementById('download-button');
-        if (downloadButton) {
-            const textNode = Array.from(downloadButton.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
-            if (textNode) textNode.textContent = tab.downloadButton;
-        }
+        this.updateButtonText(downloadButton, tab.downloadButton);
     }
 
     updateRemoveZerosTab(t) {
@@ -269,10 +263,7 @@ export class LocalizationManager {
         if (processButton) processButton.textContent = tab.processButton;
 
         const downloadProcessedButton = document.getElementById('download-processed-button');
-        if (downloadProcessedButton) {
-            const textNode = Array.from(downloadProcessedButton.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
-            if (textNode) textNode.textContent = tab.downloadProcessedButton;
-        }
+        this.updateButtonText(downloadProcessedButton, tab.downloadProcessedButton);
     }
 
     updateBlendShapeTab(t) {
@@ -326,22 +317,13 @@ export class LocalizationManager {
 
         // Update buttons
         const clearButton = document.getElementById('blendshape-clear-button');
-        if (clearButton) {
-            const textNode = Array.from(clearButton.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
-            if (textNode) textNode.textContent = tab.clearButton;
-        }
+        this.updateButtonText(clearButton, tab.clearButton);
 
         const generateButton = document.getElementById('blendshape-generate-button');
-        if (generateButton) {
-            const textNode = Array.from(generateButton.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
-            if (textNode) textNode.textContent = tab.generateButton;
-        }
+        this.updateButtonText(generateButton, tab.generateButton);
 
         const downloadButton = document.getElementById('blendshape-download-button');
-        if (downloadButton) {
-            const textNode = Array.from(downloadButton.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
-            if (textNode) textNode.textContent = tab.downloadButton;
-        }
+        this.updateButtonText(downloadButton, tab.downloadButton);
     }
 
     updateAboutTab(t) {
@@ -431,6 +413,25 @@ export class LocalizationManager {
                 const span = label.querySelector('span');
                 if (span) span.textContent = text;
             }
+        }
+    }
+
+    updateButtonText(button, text) {
+        if (!button) return;
+
+        // Remove all existing text nodes
+        Array.from(button.childNodes).forEach(node => {
+            if (node.nodeType === Node.TEXT_NODE) {
+                node.remove();
+            }
+        });
+
+        // Add new text node
+        // If button has children (like SVG icons), add text after the first child
+        if (button.firstElementChild) {
+            button.firstElementChild.after(document.createTextNode(text));
+        } else {
+            button.appendChild(document.createTextNode(text));
         }
     }
 
