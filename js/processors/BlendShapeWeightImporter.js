@@ -48,6 +48,7 @@ export class BlendShapeWeightImporter {
      * @param {string} options.meshPath - Path to the SkinnedMeshRenderer in the hierarchy
      * @param {number} options.sampleRate - Sample rate (default: 60)
      * @param {number} options.wrapMode - Wrap mode (default: 0 for Once)
+     * @param {boolean} options.excludeZeros - Whether to exclude blend shapes with all zero values (default: true)
      * @returns {string} - Unity animation YAML content
      */
     static convertToAnimation(options) {
@@ -56,7 +57,8 @@ export class BlendShapeWeightImporter {
             animationName = 'BlendShapeAnimation',
             meshPath = '',
             sampleRate = 60,
-            wrapMode = 0
+            wrapMode = 0,
+            excludeZeros = true
         } = options;
 
         if (!frames || frames.length === 0) {
@@ -64,7 +66,7 @@ export class BlendShapeWeightImporter {
         }
 
         // Build m_FloatCurves from frames
-        const curves = this.buildFloatCurves(frames, meshPath);
+        const curves = this.buildFloatCurves(frames, meshPath, excludeZeros);
 
         // Generate YAML header and metadata
         const yaml = this.generateAnimationYAML({
@@ -81,9 +83,10 @@ export class BlendShapeWeightImporter {
      * Build float curves from frame data
      * @param {Array} frames - Array of frame data
      * @param {string} meshPath - Mesh path in hierarchy
+     * @param {boolean} excludeZeros - Whether to exclude blend shapes with all zero values
      * @returns {Array} - Array of curve objects
      */
-    static buildFloatCurves(frames, meshPath) {
+    static buildFloatCurves(frames, meshPath, excludeZeros = true) {
         const curves = [];
         const blendShapeCount = frames[0].values.length;
 
@@ -92,7 +95,7 @@ export class BlendShapeWeightImporter {
             // Check if this blend shape has any non-zero values
             const hasNonZeroValue = frames.some(frame => frame.values[i] !== 0);
 
-            if (!hasNonZeroValue) {
+            if (excludeZeros && !hasNonZeroValue) {
                 continue; // Skip blend shapes with all zero values
             }
 
@@ -227,7 +230,8 @@ export class BlendShapeWeightImporter {
             animationName = 'BlendShapeAnimation',
             meshPath = '',
             sampleRate = 60,
-            duration = 1.0
+            duration = 1.0,
+            excludeZeros = true
         } = options;
 
         // Create two frames with the same values (static pose)
@@ -241,7 +245,8 @@ export class BlendShapeWeightImporter {
             animationName,
             meshPath,
             sampleRate,
-            wrapMode: 0 // Once
+            wrapMode: 0, // Once
+            excludeZeros
         });
     }
 
