@@ -59,7 +59,9 @@ export const translations = {
         title: 'BlendShape Weight Importer',
         description: 'Paste Unity BlendShapeWeights JSON data and convert it to an animation file',
         editorLabel: 'BlendShapeWeights JSON',
+        placeholder: 'Paste BlendShapeWeights JSON here...\n\nExample:\nGenericPropertyJSON:{"name":"m_BlendShapeWeights","type":-1,"arraySize":513,"arrayType":"float",...}',
         noContent: 'No content',
+        excludeZeros: 'Exclude zeros',
         totalBlendShapes: 'Total BlendShapes:',
         nonZeroValues: 'Non-zero values:',
         frames: 'Frames:',
@@ -72,7 +74,8 @@ export const translations = {
         frameRate: 'Frame Rate (FPS):',
         clearButton: 'Clear',
         generateButton: 'Generate Animation',
-        downloadButton: 'Download .anim'
+        downloadButton: 'Download .anim',
+        errorPrefix: 'Error: '
     },
 
     about: {
@@ -134,5 +137,14 @@ export const translations = {
         parseError: 'Parse error',
         fileTooLarge: 'File is too large (max 10MB)',
         invalidFileType: 'Invalid file type - must be .anim'
+    },
+
+    errors: {
+        initFailed: 'Application failed to initialize. Please refresh the page.'
+    },
+
+    meta: {
+        description: 'Unity BlendShape Weight Importer - Convert BlendShapeWeights JSON to .anim files',
+        keywords: 'Unity, BlendShape, Animation, Tool, Web'
     }
 };
