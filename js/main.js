@@ -1,21 +1,10 @@
 // Main Application Entry Point
-import { TabManager } from './ui/TabManager.js';
-import { ThemeManager } from './ui/ThemeManager.js';
-import { LocalizationManager } from './ui/LocalizationManager.js';
-import { TextToFileUI } from './ui/TextToFileUI.js';
-import { RemoveZerosUI } from './ui/RemoveZerosUI.js';
 import { BlendShapeUI } from './ui/BlendShapeUI.js';
 
 // Application class
-class UnityAnimationEditor {
+class UnityBlendShapeImporter {
     constructor() {
-        this.tabManager = null;
-        this.themeManager = null;
-        this.localizationManager = null;
-        this.textToFileUI = null;
-        this.removeZerosUI = null;
         this.blendShapeUI = null;
-
         this.init();
     }
 
@@ -30,25 +19,14 @@ class UnityAnimationEditor {
         }
     }
 
-    async initializeApp() {
-        console.log('Unity Animation Editor initializing...');
+    initializeApp() {
+        console.log('Unity BlendShape Importer initializing...');
 
         try {
-            // Initialize managers
-            this.themeManager = new ThemeManager();
-
-            // Initialize localization (async)
-            this.localizationManager = new LocalizationManager();
-            await this.localizationManager.init();
-
-            this.tabManager = new TabManager();
-
-            // Initialize UI controllers for each tab
-            this.textToFileUI = new TextToFileUI();
-            this.removeZerosUI = new RemoveZerosUI();
+            // Initialize BlendShape UI
             this.blendShapeUI = new BlendShapeUI();
 
-            console.log('Unity Animation Editor initialized successfully');
+            console.log('Unity BlendShape Importer initialized successfully');
         } catch (error) {
             console.error('Failed to initialize application:', error);
             this.showError('Application failed to initialize. Please refresh the page.');
@@ -79,7 +57,7 @@ class UnityAnimationEditor {
 }
 
 // Initialize the application
-const app = new UnityAnimationEditor();
+const app = new UnityBlendShapeImporter();
 
 // Export for debugging
-window.UnityAnimationEditor = app;
+window.UnityBlendShapeImporter = app;
