@@ -6,7 +6,7 @@
 
 Unityのブレンドシェイプをコピーして貼り付けたらアニメーションファイルができるやつ。インストール不要 - すべての処理がブラウザ上でローカルに実行されます。
 
-**🚀 [ライブデモを試す](https://s4na.github.io/unity-animation-editor/)**
+**🚀 [ライブデモを試す](https://s4na.github.io/shape2anim4unity/)**
 
 ## 機能
 
